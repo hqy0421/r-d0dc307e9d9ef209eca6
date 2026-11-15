@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- add `mara_pipelines.sessionization` for maintaining user sessions from continuously
+  arriving access events: sessions are grouped per user with a configurable idle
+  threshold, changes carry an event id, a source version and a delete flag, revised
+  sessions are physically retracted and republished, duplicates and out-of-order
+  versions are ignored, only sessions adjacent to an affected position are recomputed,
+  and every batch is applied atomically
+- add configuration values `session_db_alias` and `session_idle_threshold`
+
 ## 3.5.0 (2023-12-06)
 
 - add entry point `mara.commands` (for [mara-cli](https://github.com/mara/mara-cli) support)

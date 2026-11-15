@@ -70,4 +70,12 @@ and can be changed with the `monkey patch`_ from `Mara App`_. An example can be 
 
 |
 
+.. autofunction:: session_db_alias
+
+|
+
+.. autofunction:: session_idle_threshold
+
+|
+
 .. autofunction:: password_masks

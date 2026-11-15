@@ -84,3 +84,37 @@ Shell
 .. autofunction:: run_shell_command
 
 .. autofunction:: sed_command
+
+
+Sessions
+--------
+
+.. module:: mara_pipelines.sessionization
+
+.. autoclass:: SessionLoader
+    :members:
+
+.. autoclass:: EventChange
+    :members:
+
+.. autoclass:: SessionData
+
+.. autoclass:: LoadResult
+    :members:
+
+.. autoclass:: SessionEvent
+
+.. autoclass:: UserSession
+
+.. autoclass:: SessionRetraction
+
+.. autofunction:: create_tables
+
+.. autofunction:: load
+
+.. autofunction:: recompute_sessions
+
+.. autofunction:: LoadSessions
+
+``load_sessions``, ``apply_changes`` and ``maintain_sessions`` are aliases of
+:func:`load`.

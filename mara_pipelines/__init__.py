@@ -15,12 +15,14 @@ def MARA_FLASK_BLUEPRINTS():
 def MARA_AUTOMIGRATE_SQLALCHEMY_MODELS():
     from .incremental_processing import file_dependencies, processed_files, incremental_copy_status
     from .logging import run_log
+    from . import sessionization
 
     return [
         processed_files.ProcessedFile,
         file_dependencies.FileDependency,
         incremental_copy_status.IncrementalCopyStatus,
-        run_log.Run, run_log.NodeRun, run_log.NodeOutput, run_log.SystemStatistics
+        run_log.Run, run_log.NodeRun, run_log.NodeOutput, run_log.SystemStatistics,
+        sessionization.SessionEvent, sessionization.UserSession, sessionization.SessionRetraction
     ]
 
 

@@ -105,6 +105,34 @@ def event_handlers() -> typing.List[events.EventHandler]:
         return []
 
 
+def session_db_alias() -> str:
+    """
+    The alias of the database that stores the raw events and the published user sessions
+
+    Used by :mod:`mara_pipelines.sessionization`. When the mara database is not
+    configured, the default database alias is used instead.
+    """
+    try:
+        import mara_db.config
+        if 'mara' in mara_db.config.databases():
+            return 'mara'
+    except Exception:  # pragma: no cover - database configuration is optional
+        pass
+    return default_db_alias()
+
+
+def session_idle_threshold():
+    """
+    The maximum time between two consecutive events of a user that still belongs to one session
+
+    Accepts a ``datetime.timedelta``, a number of seconds or a string such as
+    ``"30 minutes"``. It can also be a mapping of user ids to thresholds or a
+    callable that receives a user id and returns a threshold, so that different
+    users can be sessionized with different idle thresholds.
+    """
+    return datetime.timedelta(minutes=30)
+
+
 def password_masks() -> typing.List[str]:
     """Any passwords which should be masked in the UI or logs"""
 
